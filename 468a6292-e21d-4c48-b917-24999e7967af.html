@@ -1,0 +1,683 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xhamster.Live</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+        scrollbar-width: none;
+    }
+
+    body {
+        background-color: #181818;
+        color: #ffffff;
+    }
+
+    a {
+        text-decoration: none;
+        color: #ffffff;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+    /* Header Styles */
+    header {
+        background-color: #000000;
+        padding: 10px 20px;
+        border-bottom: 1px solid #333;
+    }
+
+    .load {
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 0;
+        z-index: 10;
+    }
+
+    .more {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.8rem;
+        font-weight: bold;
+        /* background-color: #ff8a00; */
+        padding: 0.5rem 1rem;
+        border-radius: 1.5rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+
+    .header-container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .header-main-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        width: 100%;
+    }
+
+    .logo {
+        flex-shrink: 0;
+    }
+
+    .logo img {
+        height: 40px;
+    }
+
+    .search-bar {
+        display: flex;
+        flex: 1;
+        max-width: 600px;
+    }
+
+    .search-bar input {
+        flex: 1;
+        padding: 10px;
+        background-color: #222;
+        border: 1px solid #444;
+        border-radius: 4px 0 0 4px;
+        color: #fff;
+    }
+
+    .search-button {
+        background-color: #333;
+        color: #fff;
+        border: none;
+        padding: 0 15px;
+        border-radius: 0 4px 4px 0;
+    }
+
+    .desktop-auth {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .login-button {
+        background: none;
+        border: 1px solid #444;
+        color: #fff;
+        padding: 8px 15px;
+        border-radius: 4px;
+    }
+
+    .signup-button {
+        background-color: #e74c3c;
+        border: none;
+        color: #fff;
+        padding: 8px 15px;
+        border-radius: 4px;
+    }
+
+    .mobile-search-row {
+        display: none;
+        align-items: center;
+        width: 100%;
+        gap: 10px;
+        /* margin-top: 5px; */
+        justify-content: space-between;
+    }
+
+    .mobile-search-row .search-bar {
+        flex: 1;
+        max-width: none;
+        display: flex;
+    }
+
+    .header-toggle-btn {
+        display: none;
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    .mobile-header {
+        display: none;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .mobile-header .logo {
+        margin: 0 auto;
+    }
+
+    /* Navigation Menu */
+    .main-nav {
+        background-color: #000000;
+        padding: 0 20px;
+        border-bottom: 1px solid #333;
+    }
+
+    .main-menu {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        overflow-x: auto;
+    }
+
+    .main-menu li {
+        white-space: nowrap;
+    }
+
+    .main-menu a {
+        display: block;
+        padding: 15px;
+        color: #aaa;
+        font-size: 14px;
+        transition: color 0.2s;
+    }
+
+    .main-menu a:hover {
+        color: #fff;
+    }
+
+    .chat-link {
+        color: #e74c3c !important;
+    }
+
+    .premium-link {
+        color: #f1c40f !important;
+    }
+
+    /* Main video section */
+    .main-video {
+        position: relative;
+        margin-top: 10px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #333;
+        background: #111;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .video-container {
+        position: relative;
+        width: 100%;
+        /* height: 100vh; */
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #000;
+    }
+
+    .video-wrapper {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: 56.25%;
+        /* 16:9 Aspect Ratio */
+        max-width: 1920px;
+        /* Maximum width for the video */
+    }
+
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        background: #000;
+    }
+
+    .play-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 70px;
+        height: 70px;
+        background: rgba(255, 64, 129, 0.3);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.3s;
+        box-shadow: 0 0 20px rgba(255, 64, 129, 0.5);
+    }
+
+    .play-button:hover {
+        background: rgba(255, 64, 129, 0.5);
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    .play-button i {
+        font-size: 32px;
+        color: #fff;
+    }
+
+    .video-controls {
+        display: flex;
+        justify-content: space-between;
+        padding: 15px;
+        background: #111;
+        border-top: 1px solid #333;
+    }
+
+    .control-left,
+    .control-right {
+        display: flex;
+        gap: 25px;
+    }
+
+    .control-button {
+        font-size: 1.3rem;
+        color: #ddd;
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: color 0.2s, transform 0.2s;
+    }
+
+    .control-button:hover {
+        color: #ff4081;
+        transform: scale(1.1);
+    }
+
+    /* Category buttons */
+    .category-buttons {
+        display: flex;
+        overflow-x: auto;
+        padding: 12px 10px;
+        gap: 20px;
+        background: #111;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        border-bottom: 1px solid #333;
+    }
+
+    .category-buttons::-webkit-scrollbar {
+        display: none;
+    }
+
+    .category-button {
+        margin-top: 10px;
+        white-space: nowrap;
+        padding: 8px 16px;
+        background: #333;
+        color: #fff;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        border: none;
+        transition: all 0.2s;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .category-button:hover {
+        background: #444;
+        transform: translateY(-2px);
+    }
+
+    /* Channel info */
+    .channel-info {
+        display: flex;
+        padding: 18px;
+        align-items: center;
+        gap: 15px;
+        border-bottom: 1px solid #333;
+        background: #111;
+        border-radius: 0 0 12px 12px;
+    }
+
+    .channel-avatar {
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        background: linear-gradient(145deg, #333, #222);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .channel-avatar i {
+        font-size: 24px;
+        color: #ddd;
+    }
+
+    .channel-details {
+        flex: 1;
+    }
+
+    .channel-name {
+        font-weight: bold;
+        margin-bottom: 6px;
+        font-size: 1.1rem;
+    }
+
+    .channel-stats {
+        font-size: 0.85rem;
+        color: #bbb;
+    }
+
+    .subscribe-button {
+        background: #ff4081;
+        color: #fff;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 24px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.2s;
+        box-shadow: 0 3px 8px rgba(255, 64, 129, 0.3);
+    }
+
+    .subscribe-button:hover {
+        background: #ff5a92;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 12px rgba(255, 64, 129, 0.4);
+    }
+
+    /* Responsive adjustments */
+    @media (min-width: 768px) {
+        .video-grid {
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .nav-tabs,
+        .category-buttons {
+            padding: 15px;
+            gap: 20px;
+            justify-content: flex-start;
+        }
+
+        .main-video {
+            max-width: 800px;
+            margin: 20px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .header,
+        .video-controls,
+        .channel-info {
+            padding: 15px 20px;
+        }
+
+        .play-button {
+            width: 80px;
+            height: 80px;
+        }
+
+        .play-button i {
+            font-size: 36px;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .video-grid {
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .main-video {
+            max-width: 1000px;
+            margin: 30px auto;
+        }
+
+        .video-title {
+            font-size: 1.1rem;
+        }
+
+        .control-button {
+            font-size: 1.4rem;
+        }
+
+        .category-button {
+            padding: 10px 20px;
+            font-size: 1rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+
+        /* Header adjustments */
+        .header-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header-main-row {
+            display: none;
+        }
+
+        .mobile-header {
+            display: block;
+        }
+
+        .mobile-search-row {
+            display: flex;
+        }
+
+        .header-toggle-btn {
+            display: block;
+        }
+    }
+</style>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-container">
+            <!-- Desktop View Header -->
+            <div class="header-main-row">
+                <a href="https://xhamster2.live/" class="logo">
+                    <img src="http://www.videohub.space/IMG_8852.jpeg" alt="Logo">
+                </a>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for videos" id="basic_search_txt">
+                    <button class="search-button"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="desktop-auth">
+                    <a href="https://goathaga.top/4/8889715" class="login-button">Login</a>
+                    <a href="https://goathaga.top/4/8889715" class="signup-button">Sign up for free</a>
+                </div>
+            </div>
+            <!-- Desktop View Header -->
+
+            <!-- Mobile View Header-->
+            <div class="mobile-header">
+                <a href="https://xhamster2.live/" class="logo">
+                    <img src="http://www.videohub.space/IMG_8852.jpeg" alt="Logo">
+                </a>
+            </div>
+            <div class="mobile-search-row">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for videos">
+                    <button class="search-button"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+            <!-- Mobile View Header-->
+        </div>
+    </header>
+    <!-- Header Section -->
+
+    <!-- Navigation Menu -->
+    <nav class="main-nav">
+        <ul class="main-menu">
+            <li><a href="https://xhamster2.live/">Videos</a></li>
+            <li><a href="https://xhamster2.live/" style="color: rgb(39, 204, 6); font-weight: bold;">Live <span style="font-size: 7px;">🟢</span></a></li>
+            <li><a href="https://xhamster2.live/">Categories</a></li>
+            <li><a href="https://xhamster2.live/">Creators</a></li>
+            <li><a href="https://xhamster2.live/">Channels</a></li>
+            <li><a href="https://xhamster2.live/">Photos</a></li>
+            <li><a href="https://xhamster2.live/" class="chat-link">Chat</a></li>
+            <li><a href="https://xhamster2.live/" class="premium-link">Premium Videos</a></li>
+        </ul>
+    </nav>
+    <!-- Navigation Menu -->
+
+    <!-- Main video section -->
+    <div class="main-video">
+
+        <!-- Video title heading -->
+        <h2
+            style="padding: 15px; font-size: 1.3rem; font-weight: 600; color: #fff; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); margin-top: 10px;">
+            mathara dewmini </h2>
+        <!-- Video title heading -->
+
+        <!-- Category buttons -->
+        <div class="category-buttons">
+            <a href="https://goathaga.top/4/8940318" class="category-button"><i class="fas fa-play-circle">&nbsp;</i>Only
+                Tarts</a>
+            <a href="https://goathaga.top/4/8724651" class="category-button"><i class="fas fa-rss">&nbsp;</i>71K</a>
+            <a href="https://goathaga.top/4/8889715" class="category-button"><i class="fas fa-star">&nbsp;</i>Angel Brill</a>
+            <a href="https://goathaga.top/4/8724649" class="category-button">4K Porn</a>
+            <a href="https://goathaga.top/4/8940319" class="category-button">Babe</a>
+            <a href="https://goathaga.top/4/8641479" class="category-button">Beauty</a>
+            <a href="https://goathaga.top/4/8889712" class="category-button">Big Cock</a>
+            <a href="https://goathaga.top/4/8940323" class="category-button">Blowjob</a>
+            <a href="https://goathaga.top/4/8724650" class="category-button"><i class="fas fa-chevron-down"></i></a>
+        </div>
+        <!-- Category buttons -->
+
+        <!-- Video player -------------------------------------------------------------------------------------------->
+        <div class="video-player">
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <div class="loader"></div>
+                    <iframe src="https://iframe.mediadelivery.net/embed/379390/468a6292-e21d-4c48-b917-24999e7967af?autoplay=false&loop=false&muted=false&preload=true&responsive=true"
+                        frameborder="0" allowfullscreen
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        onload="this.previousElementSibling.style.display='none'">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+        <!-- Video player -------------------------------------------------------------------------------------------->
+
+
+        <script type='text/javascript' src="socialAds.js"></script>
+        <script type='text/javascript' src="popAds.js"></script>
+        <!-- Popunder Ads Script -->
+    
+        <script type='text/javascript' src='//verseexposurethanksgiving.com/12/2e/88/122e88334ccb4f2e09e74baa5b144114.js'></script>
+    
+        <script>
+            // Automatically open a popunder ad after 30 seconds
+         setTimeout(function () {
+             window.open ( 'https://verseexposurethanksgiving.com/dw7tr9ztu1?key=0a50f02fa82b9007f3f30efcc3464991' , '_blank ' ) .blur(); // Replace with your popunder URL         
+             window.focus(); // Keep the main window focused
+            }, 30000); // 30 seconds delay
+        </script>
+    </head>
+
+
+
+        <!-- Video controls -->
+        <div class="video-controls" style="border-top: none; padding-top: 15px;">
+            <div class="control-left">
+                <a href="https://goathaga.top/4/8940318" class="control-button"><i class="fas fa-thumbs-up"></i></a>
+                <a href="https://goathaga.top/4/8641479" class="control-button"><i class="fas fa-thumbs-down"></i></a>
+                <a href="https://goathaga.top/4/8940323" class="control-button"><i class="fas fa-heart"></i></a>
+                <a href="https://goathaga.top/4/8724652" class="control-button"><i class="fas fa-comment"></i></a>
+            </div>
+            <div class="control-right">
+                <a href="https://goathaga.top/4/8940318" class="control-button"><i class="fas fa-share"></i></a>
+                <a href="https://goathaga.top/4/8889715" class="control-button"><i class="fas fa-flag"></i></a>
+            </div>
+        </div>
+        <!-- Video controls -->
+
+        <!-- Video stats -->
+        <div
+            style="padding: 5px 15px 15px; font-size: 0.9rem; color: #bbb; display: flex; justify-content: space-between; border-bottom: 1px solid #333;">
+            <div>
+                <span>6,901 views</span> • <!-- // Video Views // -->
+                <span>03:13</span><!-- // Video Time // -->
+            </div>
+            <div>
+                <span><i class="fas fa-eye"></i> 78% <i class="fas fa-thumbs-up" style="margin-left: 10px;"></i>
+                    1.7K</span>
+            </div>
+        </div>
+        <!-- Video stats -->
+
+        <!--------------------- Channel info ----------------->
+        <div class="channel-info" style="padding: 10px 15px; border-bottom: none;">
+            <div class="channel-avatar" style="width: 45px; height: 45px; background: #fff; overflow: hidden;">
+                <img src="http://www.videohub.space/IMG_8870.jpeg" alt="Channel avatar"
+                    style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="channel-details">
+                <div class="channel-name">SL Video Club <i class="fas fa-play-circle"
+                        style="color: #aaa; font-size: 0.9rem;"></i></div>
+                <div class="channel-stats">48 videos</div>
+            </div>
+            <div style="display: flex; gap: 10px;">
+                <a href="https://goathaga.top/4/8724652" style="background: none; border: none; color: #aaa;"><i
+                        class="fas fa-envelope"></i></a>
+                <a href="https://goathaga.top/4/8724652" style="background: none; border: none; color: #aaa;"><i
+                        class="fas fa-th-large"></i></a>
+            </div>
+        </div>
+        <!--------------------- Channel info ----------------->
+
+        <!-- Subscribe button -->
+        <div style="padding: 0 15px 15px; border-top: none; margin-top: 15px;  display: flex; text-align: center;">
+            <a href="https://goathaga.top/4/8724652" class="subscribe-button"
+                style="width: 100%; padding: 12px; font-size: 1rem;">Subscribe</a>
+        </div>
+
+        <!-- Premium button -->
+        <div style="padding: 0 15px 15px; display: flex;">
+            <a href="https://goathaga.top/4/8724652"
+                style="flex: 1; background: #4a90e2; color: #fff; border: none; padding: 12px; border-radius: 5px; font-weight: bold; font-size: 1rem;">Get
+                145 premium <i class="fas fa-external-link-alt" style="margin-left: 5px; font-size: 0.9rem;"></i></a>
+        </div>
+
+        <!-- Join button with AD tag -->
+        <div style="padding: 0 15px 15px; position: relative; display: flex;">
+            <a href="https://goathaga.top/4/8724652"
+                style="width: 100%; background: #333; color: #ffc107; border: none; padding: 12px; border-radius: 5px; font-weight: bold; font-size: 1rem; text-align: left;">
+                Join Only Tarts now <i class="fas fa-external-link-alt"
+                    style="margin-left: 5px; font-size: 0.9rem;"></i>
+            </a>
+        </div>
+    </div>
+    <!-- Main video section -->
+
+
+    <script type='text/javascript' src='//berthfrankly.com/1a/0d/a4/1a0da4edd63f1b537186d46163ed2769.js'></script>
+
+</body>
+
+</html>
