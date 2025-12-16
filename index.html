@@ -3,123 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Awesome Product - Landing Page</title>
+    <title>My Simple Website</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="main-header">
-        <div class="container">
-            <div class="logo">
-                <a href="#">AwesomeProduct</a>
-            </div>
-            <nav class="main-nav">
-                <ul class="nav-list">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <button class="nav-toggle" aria-label="toggle navigation">
-                <span class="hamburger"></span>
-            </button>
-        </div>
+    <header>
+        <h1>Welcome to My Website</h1>
     </header>
-
     <main>
-        <section id="home" class="hero-section">
-            <div class="container">
-                <div class="hero-content">
-                    <h1>Your Ultimate Solution for Modern Challenges</h1>
-                    <p>Streamline your workflow, boost productivity, and achieve your goals with our innovative platform.</p>
-                    <a href="#contact" class="btn btn-primary">Get Started Today</a>
-                </div>
-                <div class="hero-image">
-                    <img src="https://via.placeholder.com/600x400?text=Product+Showcase" alt="Product Showcase">
-                </div>
-            </div>
+        <section>
+            <h2>About Us</h2>
+            <p>This is a simple static website created as an example. It's clean, lightweight, and uses basic HTML and CSS.</p>
+            <p>Feel free to explore and customize it!</p>
         </section>
-
-        <section id="features" class="features-section">
-            <div class="container">
-                <h2>Key Features Designed for You</h2>
-                <div class="feature-grid">
-                    <div class="feature-item">
-                        <h3>Effortless Integration</h3>
-                        <p>Seamlessly connect with your existing tools and services for a unified experience.</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>Powerful Analytics</h3>
-                        <p>Gain deep insights with customizable dashboards and real-time data analysis.</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>24/7 Support</h3>
-                        <p>Our dedicated support team is always ready to assist you, day or night.</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>Secure & Reliable</h3>
-                        <p>Your data is protected with industry-leading security protocols and robust infrastructure.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="about-section">
-            <div class="container">
-                <h2>About AwesomeProduct</h2>
-                <p>We are a passionate team dedicated to building cutting-edge solutions that empower businesses and individuals. Our mission is to simplify complex tasks and provide tools that foster growth and innovation.</p>
-                <p>Founded in 2023, AwesomeProduct has quickly become a trusted partner for many, thanks to our commitment to excellence and user-centric design.</p>
-            </div>
-        </section>
-
-        <section id="contact" class="contact-section">
-            <div class="container">
-                <h2>Ready to Transform Your Business?</h2>
-                <p>Contact us today to learn how AwesomeProduct can help you achieve your objectives.</p>
-                <form class="contact-form">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                    <textarea placeholder="Your Message"></textarea>
-                    <button type="submit" class="btn btn-secondary">Send Message</button>
-                </form>
-            </div>
+        <section>
+            <h2>Our Services</h2>
+            <ul>
+                <li>Web Design</li>
+                <li>Content Creation</li>
+                <li>Consulting</li>
+            </ul>
         </section>
     </main>
-
-    <footer class="main-footer">
-        <div class="container">
-            <p>&copy; 2023 AwesomeProduct. All rights reserved.</p>
-            <div class="social-links">
-                <a href="#"><img src="https://via.placeholder.com/24x24?text=FB" alt="Facebook"></a>
-                <a href="#"><img src="https://via.placeholder.com/24x24?text=TW" alt="Twitter"></a>
-                <a href="#"><img src="https://via.placeholder.com/24x24?text=LI" alt="LinkedIn"></a>
-            </div>
-        </div>
+    <footer>
+        <p>&copy; 2023 My Simple Website. All rights reserved.</p>
     </footer>
-
-    <script>
-        // Basic JavaScript for responsive navigation toggle
-        document.addEventListener('DOMContentLoaded', () => {
-            const navToggle = document.querySelector('.nav-toggle');
-            const mainNav = document.querySelector('.main-nav');
-            const navList = document.querySelector('.nav-list');
-
-            navToggle.addEventListener('click', () => {
-                mainNav.classList.toggle('nav-open');
-                navToggle.setAttribute('aria-expanded', mainNav.classList.contains('nav-open'));
-            });
-
-            // Close nav when a link is clicked (for smoother navigation on mobile)
-            navList.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    mainNav.classList.remove('nav-open');
-                    navToggle.setAttribute('aria-expanded', 'false');
-                });
-            });
-        });
-    </script>
 </body>
 </html>
